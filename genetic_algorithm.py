@@ -36,7 +36,10 @@ class Population:
         """
 
         ### FILL THIS IN ###
-        pass
+        for ind in self.individuals:
+            ind.fitness = ind.network.evaluate()
+            print (ind)
+        self.individuals.sort(key=lambda x:x.fitness,reverse=True)
 
     def select(self):
         """
@@ -87,5 +90,6 @@ def run_genetic_algorithm():
     pass
 
 if __name__ == "__main__":
-    run_genetic_algorithm()
-
+    # run_genetic_algorithm()
+    n = Population()
+    n.evaluate()

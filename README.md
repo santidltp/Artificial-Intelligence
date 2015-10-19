@@ -1,2 +1,2 @@
 # Artificial-Intelligence
-Projects for Artificial Intelligence
+lorem ipsum
