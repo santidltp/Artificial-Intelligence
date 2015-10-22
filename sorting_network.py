@@ -1,12 +1,13 @@
 #! /usr/bin/python3
 import itertools
 import random
+import copy
 
 # NUM_INPUTS        | 1 | 2 | 3 | 4 | 5 |  6 |  7 |  8 |
 # NUM_COMPARATORS   | 0 | 1 | 3 | 5 | 9 | 12 | 16 | 19 |
 
 NUM_INPUTS      = 4
-NUM_COMPARATORS = 4
+NUM_COMPARATORS = 5
 
 def is_sorted(array):
     """
@@ -68,7 +69,7 @@ class SortingNetwork:
         ### FILL THIS IN ###
         random_sorting_network = []
         test=[]
-        for x in range(NUM_COMPARATORS):
+        for x in range(NUM_INPUTS):
             for y in range(NUM_INPUTS):
                 if x < y:
                     tup = (x, y)
@@ -101,12 +102,12 @@ class SortingNetwork:
 
         ### FILL THIS IN ###
         correct = 0
+
         for i in self.EVALUATION_CASES:
-            self.apply_on(i)
-            if sorted(i) == i:
+            temp = copy.deepcopy(i)
+            self.apply_on(temp)
+            if is_sorted(temp):
                 correct += 1
-
-
         return correct/len(self.EVALUATION_CASES)
 
 if __name__ == "__main__":
